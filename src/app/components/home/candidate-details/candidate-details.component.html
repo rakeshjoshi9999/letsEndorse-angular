@@ -1,0 +1,44 @@
+<app-header></app-header>
+
+
+<div class="card">
+	<div style="margin-left:98% ;padding:10px 0px">
+		<button mat-icon-button (click)="goBack()">
+			<mat-icon>arrow_back</mat-icon>
+		</button>
+	</div>
+	<mat-card>
+
+		<mat-card-title>Candidate Details:</mat-card-title>
+
+		<mat-card-content>
+			<h4>First Name: {{candidate.firstName}}</h4>
+			<h4>Last Name: {{candidate.lastName}}</h4>
+			<h4>Adhar Number: {{candidate.adharNumber}}</h4>
+			<h4>Phone Number: {{candidate.phone}}</h4>
+			<h4>Gender: {{candidate.gender}}</h4>
+			<h4>Alt. Phone Number: {{candidate.alternatePhone}}</h4>
+			<h4>Date of Birth: {{candidate.dob}}</h4>
+			<h4>Assets: {{candidate.hasAssets}}</h4>
+			<h4>Has Bank Account?: {{candidate.hasBankAccount}}</h4>
+			<h4>Training Required?: {{candidate.needsTraining}}</h4>
+			<h4>Occupation: {{candidate.occupation}}</h4>
+			<h4>Qualification: {{candidate.qualificatioin}}</h4>
+			<h4>Source: {{candidate.source}}</h4>
+			<h4>Source Type: {{candidate.sourceType}}</h4>
+			<h4>Status: {{candidate.status}}</h4>
+			<h4>Successful Enterprises: {{candidate.successfulEnterprises}}</h4>
+			<h4>Failed Enterprises: {{candidate.failedEnterprises}}</h4>
+			<h4>Address: {{candidate.address.address1}},
+				{{candidate.address.address2}},
+				{{candidate.address.city}},
+				{{candidate.address.district}},
+				{{candidate.address.country}},
+				{{candidate.address.state}},
+
+			</h4>
+
+		</mat-card-content>
+
+	</mat-card>
+</div>

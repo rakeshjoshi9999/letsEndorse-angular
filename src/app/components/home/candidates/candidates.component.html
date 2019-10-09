@@ -1,0 +1,107 @@
+<div class="main" id="content1">
+	<div class="title">
+		<h4>
+			Candidates
+			<span>
+				<button mat-icon-button (click)="addNewCandidate()">
+					<mat-icon matTooltip="Add new candidate" alt="add candidate">person_add</mat-icon>
+				</button>
+			</span>
+		</h4>
+	</div>
+	<div class="content-container">
+		<div class="search-box">
+			<mat-grid-list cols="4" rowHeight="100px" gutterSize="20px">
+				<mat-grid-tile [colspan]="3">
+					<mat-form-field>
+						<input matInput (keyup)="debouncer($event.target.value)" placeholder="Search...." />
+					</mat-form-field>
+				</mat-grid-tile>
+				<mat-grid-tile [colspan]="1">
+					<mat-form-field>
+						<mat-label>Filter</mat-label>
+						<mat-select disableOptionCentering>
+							<mat-option *ngFor="let role of roles" [value]="role.value"
+								(click)="getFilteredUsers(role.value)">
+								{{ role.viewValue }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</mat-grid-tile>
+			</mat-grid-list>
+		</div>
+		<br>
+		<!-- <div class="topBottomClass">
+            <button
+                style="background-color: #1a1a27; color:white;font-size: 12px; display: flex; justify-content: flex-end"
+                mat-raised-button (click)="gotoDown()">Go To down
+            </button>
+        </div> -->
+
+		<br>
+
+		<table mat-table [dataSource]="dataSource" #table class="mat-elevation-z8">
+			<!-- Id Column -->
+			<ng-container matColumnDef="id">
+				<th mat-header-cell *matHeaderCellDef>Id</th>
+				<td mat-cell *matCellDef="let element">{{ element._id }}</td>
+			</ng-container>
+
+			<!-- Name Column -->
+			<ng-container matColumnDef="firstname">
+				<th mat-header-cell *matHeaderCellDef> First Name</th>
+				<td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+			</ng-container>
+			<ng-container matColumnDef="lastname">
+				<th mat-header-cell *matHeaderCellDef> Last Name</th>
+				<td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+			</ng-container>
+
+			<!-- Email Column -->
+			<ng-container matColumnDef="email">
+				<th mat-header-cell *matHeaderCellDef>Email</th>
+				<td mat-cell *matCellDef="let element">{{ element.email }}</td>
+			</ng-container>
+
+			<!-- role Column -->
+			<ng-container matColumnDef="phone">
+				<th mat-header-cell *matHeaderCellDef>Phone</th>
+				<td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+			</ng-container>
+
+			<!-- isEmailSent Column -->
+			<ng-container matColumnDef="dob">
+				<th mat-header-cell *matHeaderCellDef>Date of Birth</th>
+				<td mat-cell *matCellDef="let element">{{ element.dob }}</td>
+			</ng-container>
+
+			<!-- CanManageUser Column -->
+			<ng-container matColumnDef="gender">
+				<th mat-header-cell *matHeaderCellDef>Gender</th>
+				<td mat-cell *matCellDef="let element">{{ element.gender }}</td>
+			</ng-container>
+
+			<!-- CanManageUser Column -->
+			<ng-container matColumnDef="status">
+				<th mat-header-cell *matHeaderCellDef>
+					Status
+				</th>
+				<td mat-cell *matCellDef="let element">
+					{{ element.status }}
+				</td>
+			</ng-container>
+			<ng-container matColumnDef="options">
+				<th mat-header-cell *matHeaderCellDef></th>
+				<td mat-cell *matCellDef="let element" class="viewButton">
+					<button (click)='showCandidateDetails(element._id)'
+						style="background-color: #1a1a27; color:white;font-size: 12px;" mat-raised-button>View
+						more</button>
+					<!-- <button (click)='showProductDetail(element._id)' mat-raised-button>View</button> -->
+				</td>
+			</ng-container>
+
+			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClicked(row)"></tr>
+		</table>
+
+	</div>

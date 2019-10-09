@@ -1,0 +1,252 @@
+<app-header></app-header>
+
+<div class="main">
+	<h2 style="text-align: center">
+		Add New Candidate
+	</h2>
+
+	<div class="form-conatiner">
+		<mat-card>
+			<form [formGroup]="form">
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>Adhar Number</mat-label>
+						<input type="text" matInput placeholder="Adhar Number" formControlName="adharNumber"
+							name="adharNumber" required />
+						<mat-error *ngIf="hasError('adharNumber', 'required')">Adhar Number is required</mat-error>
+						<mat-error *ngIf="hasError('adharNumber', 'pattern')">Invalid Adhar Number</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>First Name</mat-label>
+						<input type="text" matInput placeholder="First Name" formControlName="firstname"
+							name="firstname" required />
+						<mat-error *ngIf="hasError('firstname', 'required')">First Name is required</mat-error>
+						<mat-error *ngIf="hasError('firstname', 'pattern')">Invalid First Name</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>Last Name</mat-label>
+						<input type="text" matInput placeholder="Last Name" formControlName="lastname" name="lastname"
+							required />
+						<mat-error *ngIf="hasError('lastname', 'required')">Last Name is required</mat-error>
+						<mat-error *ngIf="hasError('lastname', 'pattern')">Invalid Last Name</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>Email</mat-label>
+						<input type="text" matInput placeholder="Email" formControlName="email" name="email" required />
+						<mat-error *ngIf="hasError('email', 'required')">Email is required</mat-error>
+						<mat-error *ngIf="hasError('email', 'pattern')">Invalid Email</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>Phone</mat-label>
+						<input type="text" matInput placeholder="Phone" formControlName="phone" name="phone" required />
+						<mat-error *ngIf="hasError('phone', 'required')">Phone is required</mat-error>
+						<mat-error *ngIf="hasError('phone', 'pattern')">Invalid Phone Number</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>Alternate Phone</mat-label>
+						<input type="text" matInput placeholder="Alternate Phone Number"
+							formControlName="alternatePhone" name="alternatePhone" />
+						<mat-error *ngIf="hasError('alternatePhone', 'pattern')">Invalid alternate Phone</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>Date of Birth</mat-label>
+						<input type="text" matInput placeholder="Date of Birth(dd/mm/yyyy)" formControlName="dob"
+							name="dob" required />
+						<mat-error *ngIf="hasError('dob', 'required')">Date of Birth is required</mat-error>
+						<mat-error *ngIf="hasError('dob', 'pattern')">Invalid Date of Birth</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>Gender</mat-label>
+						<mat-select formControlName="gender" required>
+							<mat-option *ngFor="let gender of genders" [value]="gender.value">
+								{{ gender.viewValue }}
+							</mat-option>
+						</mat-select>
+						<mat-error *ngIf="hasError('gender', 'required')">Gender is required</mat-error>
+					</mat-form-field>
+				</div>
+
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>Address</mat-label>
+						<input type="text" matInput placeholder="Address Line 1" formControlName="address1"
+							name="address1" required />
+						<mat-error *ngIf="hasError('address1', 'required')">Address Line 1 is required</mat-error>
+
+					</mat-form-field>
+					<mat-form-field>
+						<input type="text" matInput placeholder="Address Line 2" formControlName="address2"
+							name="address2" required />
+						<mat-error *ngIf="hasError('address2', 'required')">Address Line 2 is required</mat-error>
+					</mat-form-field>
+					<mat-form-field>
+						<input type="text" matInput placeholder="City" formControlName="city" name="city" required />
+						<mat-error *ngIf="hasError('city', 'required')">City is required</mat-error>
+					</mat-form-field>
+					<mat-form-field>
+						<input type="text" matInput placeholder="District" formControlName="district" name="district"
+							required />
+						<mat-error *ngIf="hasError('district', 'required')">District is required</mat-error>
+					</mat-form-field>
+					<mat-form-field>
+						<input type="text" matInput placeholder="State" formControlName="state" name="state" required />
+						<mat-error *ngIf="hasError('state', 'required')">State is required</mat-error>
+					</mat-form-field>
+					<mat-form-field>
+						<input type="text" matInput placeholder="Country" formControlName="country" name="country"
+							required />
+						<mat-error *ngIf="hasError('country', 'required')">Country is required</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>Source</mat-label>
+						<mat-select formControlName="source" required>
+							<mat-option *ngFor="let source of sources" [value]="source.value">
+								{{ source.viewValue }}
+							</mat-option>
+						</mat-select>
+						<mat-error *ngIf="hasError('source', 'required')">Source is required</mat-error>
+					</mat-form-field>
+				</div>
+
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>Source Type</mat-label>
+						<mat-select formControlName="sourceType" required>
+							<mat-option *ngFor="let sourceType of sourceTypes" [value]="sourceType.value">
+								{{ sourceType.viewValue }}
+							</mat-option>
+						</mat-select>
+						<mat-error *ngIf="hasError('sourceType', 'required')">Source Type is required</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>Employment Status</mat-label>
+						<mat-select formControlName="employementStatus" required>
+							<mat-option *ngFor="let employementStatus of employementStatuses"
+								[value]="employementStatus.value">
+								{{ employementStatus.viewValue }}
+							</mat-option>
+						</mat-select>
+						<mat-error *ngIf="hasError('employementStatus', 'required')">Employment Status is required
+						</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>Occupation</mat-label>
+						<mat-select formControlName="occupation" required>
+							<mat-option *ngFor="let occupation of occupations" [value]="occupation.value">
+								{{ occupation.viewValue }}
+							</mat-option>
+						</mat-select>
+						<mat-error *ngIf="hasError('occupation', 'required')">Occupation is required</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>Educational Qualification</mat-label>
+						<mat-select formControlName="qualification" required>
+							<mat-option *ngFor="let qualification of qualifications" [value]="qualification.value">
+								{{ qualification.viewValue }}
+							</mat-option>
+						</mat-select>
+						<mat-error *ngIf="hasError('qualification', 'required')">Qualification is required</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>Annual Income</mat-label>
+						<mat-select formControlName="annualIncome" required>
+							<mat-option *ngFor="let annualIncome of annualIncomes" [value]="annualIncome.value">
+								{{ annualIncome.viewValue }}
+							</mat-option>
+						</mat-select>
+						<mat-error *ngIf="hasError('annualIncome', 'required')">Annual Income is required</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="input-field">
+					<mat-label> Needs Training</mat-label>
+					<mat-radio-group formControlName="needsTraining" aria-label="Needs Training">
+						<mat-radio-button value="true">True</mat-radio-button>
+						<mat-radio-button value="false">False</mat-radio-button>
+					</mat-radio-group>
+					<mat-error *ngIf="hasError('needsTraining', 'required')">Required</mat-error>
+
+				</div>
+				<hr />
+				<div class="input-field">
+					<mat-label>Has Bank Account</mat-label>
+					<mat-radio-group formControlName="hasBankAccount" required aria-label="Has Bank Account">
+						<mat-radio-button value="true">True</mat-radio-button>
+						<mat-radio-button value="false">False</mat-radio-button>
+					</mat-radio-group>
+					<mat-error *ngIf="hasError('hasBankAccount', 'required')">Required</mat-error>
+				</div>
+				<hr />
+				<div class="input-field">
+					<mat-label>Has Assets</mat-label>
+					<mat-radio-group formControlName="hasAssets" required aria-label="Has Assets">
+						<mat-radio-button value="true">True</mat-radio-button>
+						<mat-radio-button value="false">False</mat-radio-button>
+					</mat-radio-group>
+					<mat-error *ngIf="hasError('hasAssets', 'required')">Required</mat-error>
+				</div>
+				<hr />
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>Successful Enterprises</mat-label>
+						<input type="text" matInput placeholder="Successful Enterprises"
+							formControlName="successfulEnterprises" name="successfulEnterprises" required />
+						<mat-error *ngIf="hasError('successfulEnterprises', 'required')">ISuccessful Enterprises is
+							required
+						</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>Failed Enterprises</mat-label>
+						<input type="text" matInput placeholder="Failed Enterprises" formControlName="failedEnterprises"
+							name="failedEnterprises" required />
+						<mat-error *ngIf="hasError('failedEnterprises', 'required')">Failed Enterprises is required
+						</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="input-field">
+					<mat-form-field>
+						<mat-label>Status </mat-label>
+						<mat-select formControlName="status" required>
+							<mat-option *ngFor="let status of statuses" [value]="status.value">
+								{{ status.viewValue }}
+							</mat-option>
+						</mat-select>
+						<mat-error *ngIf="hasError('status', 'required')">Status is required</mat-error>
+					</mat-form-field>
+				</div>
+			</form>
+
+			<div class="action-btns">
+				<button id="cancel-btn" mat-button (click)="cancel()">Cancel</button>
+				<button id="submit-btn" [disabled]="this.form.invalid" mat-button color="primary"
+					(click)="save()">Add</button>
+			</div>
+
+		</mat-card>
+	</div>
+</div>

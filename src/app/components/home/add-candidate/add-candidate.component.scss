@@ -1,0 +1,24 @@
+.main{
+	padding: 24px;
+}
+.form-conatiner{
+	padding-left: 25%;
+	width: 50%;
+	align-items: center;
+}
+.mat-form-field{
+	align-items: center;
+	width:100%;
+}
+	
+#submit-btn{
+	margin:0 3px;
+}
+#cancel-btn{
+	margin:0 3px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
